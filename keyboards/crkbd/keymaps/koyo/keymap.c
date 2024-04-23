@@ -51,20 +51,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                             KC_NO      , KC_NO      , KC_NO      ,     KC_DEL  , KC_NO     , KC_NO
 ),
 
-//    ┌────┬───┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬───┬───┐
-//    │ no │ + │  #  │  %  │  ^  │   │  <  │  {  │  "  │ } │ > │
-//    ├────┼───┼─────┼─────┼─────┤   ├─────┼─────┼─────┼───┼───┤
-//    │ !  │ - │  &  │  ?  │  |  │   │  =  │  [  │  '  │ ] │ : │
-//    ├────┼───┼─────┼─────┼─────┤   ├─────┼─────┼─────┼───┼───┤
-//    │ ~  │ _ │  *  │  @  │  $  │   │  \  │  (  │  `  │ ) │ / │
-//    └────┴───┼─────┼─────┼─────┤   ├─────┼─────┼─────┼───┴───┘
-//             │     │     │     │   │     │     │     │
-//             └─────┴─────┴─────┘   └─────┴─────┴─────┘
+//    ┌────┬───┬─────┬───────┬─────┐   ┌─────┬───────┬─────┬───┬───┐
+//    │ no │ + │  #  │   %   │  ^  │   │  <  │   {   │  "  │ } │ > │
+//    ├────┼───┼─────┼───────┼─────┤   ├─────┼───────┼─────┼───┼───┤
+//    │ !  │ - │  &  │   ?   │  |  │   │  =  │   [   │  '  │ ] │ : │
+//    ├────┼───┼─────┼───────┼─────┤   ├─────┼───────┼─────┼───┼───┤
+//    │ ~  │ _ │  *  │   @   │  $  │   │  \  │   (   │  `  │ ) │ / │
+//    └────┴───┼─────┼───────┼─────┤   ├─────┼───────┼─────┼───┴───┘
+//             │     │ TO(0) │     │   │     │ TO(0) │     │
+//             └─────┴───────┴─────┘   └─────┴───────┴─────┘
 [2] = LAYOUT_split_3x5_3(
   KC_NO   , KC_PLUS , KC_HASH , KC_PERC , KC_CIRC ,     KC_LT   , KC_LCBR , KC_DQUO , KC_RCBR , KC_GT  ,
   KC_EXLM , KC_MINS , KC_AMPR , KC_QUES , KC_PIPE ,     KC_EQL  , KC_LBRC , KC_QUOT , KC_RBRC , KC_COLN,
   KC_TILD , KC_UNDS , KC_ASTR , KC_AT   , KC_DLR  ,     KC_BSLS , KC_LPRN , KC_GRV  , KC_RPRN , KC_SLSH,
-                      KC_TRNS , KC_TRNS , KC_TRNS ,     KC_TRNS , KC_TRNS , KC_TRNS
+                      KC_TRNS , TO(0)   , KC_TRNS ,     KC_TRNS , TO(0)   , KC_TRNS
 ),
 
 //    ┌──────────┬─────────┬──────┬──────┬────┐   ┌──────┬──────┬──────┬──────┬──────┐
@@ -116,3 +116,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 )
 };
 
+const uint16_t PROGMEM togg_sym_layer_combo[] = { LT(2, KC_ESC), LT(2, KC_ENT), COMBO_END };
+
+combo_t key_combos[] = {
+    COMBO(togg_sym_layer_combo, TO(2)),
+};
