@@ -35,20 +35,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 LT(3, KC_NO) , LT(2, KC_ESC) , LT(1, KC_SPC) ,     LT(5, KC_BSPC) , LT(2, KC_ENT) , LT(4, KC_NO)
 ),
 
-//    ┌─────────┬─────────┬─────────┬─────────┬─────────┐   ┌──────┬────────┬───────────┬───────────┬────┐
-//    │ LGUI(q) │ LGUI(w) │ LGUI(e) │ LGUI(r) │ LGUI(t) │   │  no  │ LAG(i) │  LGUI(`)  │ LGUI(tab) │ no │
-//    ├─────────┼─────────┼─────────┼─────────┼─────────┤   ├──────┼────────┼───────────┼───────────┼────┤
-//    │  lgui   │  lalt   │  lctl   │  lsft   │   no    │   │ left │  down  │    up     │   rght    │ no │
-//    ├─────────┼─────────┼─────────┼─────────┼─────────┤   ├──────┼────────┼───────────┼───────────┼────┤
-//    │ LGUI(z) │ LGUI(x) │ LGUI(c) │ LGUI(v) │ LGUI(b) │   │  no  │   no   │ LSFT(tab) │    tab    │ no │
-//    └─────────┴─────────┼─────────┼─────────┼─────────┤   ├──────┼────────┼───────────┼───────────┴────┘
-//                        │   no    │   no    │   no    │   │ del  │   no   │    no     │
-//                        └─────────┴─────────┴─────────┘   └──────┴────────┴───────────┘
+//    ┌─────────┬─────────┬─────────┬─────────┬─────────┐   ┌───────┬────────┬───────────┬───────────┬─────┐
+//    │ LGUI(q) │ LGUI(w) │ LGUI(e) │ LGUI(r) │ LGUI(t) │   │  no   │ LAG(i) │  LGUI(`)  │ LGUI(tab) │ del │
+//    ├─────────┼─────────┼─────────┼─────────┼─────────┤   ├───────┼────────┼───────────┼───────────┼─────┤
+//    │  lgui   │  lalt   │  lctl   │  lsft   │   no    │   │ left  │  down  │    up     │   rght    │ no  │
+//    ├─────────┼─────────┼─────────┼─────────┼─────────┤   ├───────┼────────┼───────────┼───────────┼─────┤
+//    │ LGUI(z) │ LGUI(x) │ LGUI(c) │ LGUI(v) │ LGUI(b) │   │  no   │   no   │ LSFT(tab) │    tab    │ no  │
+//    └─────────┴─────────┼─────────┼─────────┼─────────┤   ├───────┼────────┼───────────┼───────────┴─────┘
+//                        │   no    │   no    │  TO(0)  │   │ TO(0) │ TO(0)  │    no     │
+//                        └─────────┴─────────┴─────────┘   └───────┴────────┴───────────┘
 [1] = LAYOUT_split_3x5_3(
-  LGUI(KC_Q) , LGUI(KC_W) , LGUI(KC_E) , LGUI(KC_R) , LGUI(KC_T) ,     KC_NO   , LAG(KC_I) , LGUI(KC_GRV) , LGUI(KC_TAB) , KC_NO,
-  KC_LGUI    , KC_LALT    , KC_LCTL    , KC_LSFT    , KC_NO      ,     KC_LEFT , KC_DOWN   , KC_UP        , KC_RGHT      , KC_NO,
-  LGUI(KC_Z) , LGUI(KC_X) , LGUI(KC_C) , LGUI(KC_V) , LGUI(KC_B) ,     KC_NO   , KC_NO     , LSFT(KC_TAB) , KC_TAB       , KC_NO,
-                            KC_NO      , KC_NO      , KC_NO      ,     KC_DEL  , KC_NO     , KC_NO
+  LGUI(KC_Q) , LGUI(KC_W) , LGUI(KC_E) , LGUI(KC_R) , LGUI(KC_T) ,     KC_NO   , LAG(KC_I) , LGUI(KC_GRV) , LGUI(KC_TAB) , KC_DEL,
+  KC_LGUI    , KC_LALT    , KC_LCTL    , KC_LSFT    , KC_NO      ,     KC_LEFT , KC_DOWN   , KC_UP        , KC_RGHT      , KC_NO ,
+  LGUI(KC_Z) , LGUI(KC_X) , LGUI(KC_C) , LGUI(KC_V) , LGUI(KC_B) ,     KC_NO   , KC_NO     , LSFT(KC_TAB) , KC_TAB       , KC_NO ,
+                            KC_NO      , KC_NO      , TO(0)      ,     TO(0)   , TO(0)     , KC_NO
 ),
 
 //    ┌────┬───┬─────┬───────┬─────┐   ┌─────┬───────┬─────┬───┬───┐
@@ -116,10 +116,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 )
 };
 
-const uint16_t PROGMEM togg_sym_layer_combo[] = { LT(2, KC_ESC), LT(2, KC_ENT), COMBO_END };
+const uint16_t PROGMEM togg_layer_ext_combo[] = { LT(1, KC_SPC), LT(5, KC_BSPC), COMBO_END };
+const uint16_t PROGMEM togg_layer_sym_combo[] = { LT(2, KC_ESC), LT(2, KC_ENT), COMBO_END };
 const uint16_t PROGMEM togg_caps_word_combo[] = { LSFT_T(KC_V), RSFT_T(KC_M), COMBO_END };
 
 combo_t key_combos[] = {
-    COMBO(togg_sym_layer_combo, TO(2)),
+    COMBO(togg_layer_ext_combo, TO(1)),
+    COMBO(togg_layer_sym_combo, TO(2)),
     COMBO(togg_caps_word_combo, CW_TOGG),
 };
