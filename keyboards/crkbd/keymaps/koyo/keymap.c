@@ -102,17 +102,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    ┌────┬────────┬──────┬──────┬──────┐   ┌────┬─────────┬─────────┬─────────┬────┐
 //    │ no │ MEH(k) │ volu │  no  │  no  │   │ no │ RGB_TOG │ RGB_HUD │ RGB_HUI │ no │
 //    ├────┼────────┼──────┼──────┼──────┤   ├────┼─────────┼─────────┼─────────┼────┤
-//    │ no │  mprv  │ vold │ mnxt │ mply │   │ no │ LGUI(0) │ LGUI(-) │ LGUI(=) │ no │
+//    │ no │  mprv  │ vold │ mnxt │  no  │   │ no │ LGUI(0) │ LGUI(-) │ LGUI(=) │ no │
 //    ├────┼────────┼──────┼──────┼──────┤   ├────┼─────────┼─────────┼─────────┼────┤
 //    │ no │   no   │ mute │  no  │  no  │   │ no │ DT_PRNT │ DT_DOWN │  DT_UP  │ no │
 //    └────┴────────┼──────┼──────┼──────┤   ├────┼─────────┼─────────┼─────────┴────┘
-//                  │  no  │  no  │  no  │   │ no │   no    │   no    │
+//                  │  no  │  no  │ mply │   │ no │   no    │   no    │
 //                  └──────┴──────┴──────┘   └────┴─────────┴─────────┘
 [5] = LAYOUT_split_3x5_3(
   KC_NO , MEH(KC_K) , KC_VOLU , KC_NO   , KC_NO   ,     KC_NO , RGB_TOG    , RGB_HUD       , RGB_HUI      , KC_NO,
-  KC_NO , KC_MPRV   , KC_VOLD , KC_MNXT , KC_MPLY ,     KC_NO , LGUI(KC_0) , LGUI(KC_MINS) , LGUI(KC_EQL) , KC_NO,
+  KC_NO , KC_MPRV   , KC_VOLD , KC_MNXT , KC_NO   ,     KC_NO , LGUI(KC_0) , LGUI(KC_MINS) , LGUI(KC_EQL) , KC_NO,
   KC_NO , KC_NO     , KC_MUTE , KC_NO   , KC_NO   ,     KC_NO , DT_PRNT    , DT_DOWN       , DT_UP        , KC_NO,
-                      KC_NO   , KC_NO   , KC_NO   ,     KC_NO , KC_NO      , KC_NO
+                      KC_NO   , KC_NO   , KC_MPLY ,     KC_NO , KC_NO      , KC_NO
 )
 };
 
