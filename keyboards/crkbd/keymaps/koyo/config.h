@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 
 #define MASTER_LEFT
-#define TAPPING_TERM 150
+#define TAPPING_TERM 165
 #define COMBO_TERM 50
 
 #ifdef RGBLIGHT_ENABLE
