@@ -99,20 +99,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                   KC_NO , KC_NO , KC_NO  ,     KC_NO , KC_NO   , KC_NO
 ),
 
-//    ┌────┬────────┬──────┬──────┬──────┐   ┌────┬─────────┬─────────┬─────────┬────┐
-//    │ no │ MEH(k) │ volu │  no  │  no  │   │ no │ RGB_HUD │ RGB_TOG │ RGB_HUI │ no │
-//    ├────┼────────┼──────┼──────┼──────┤   ├────┼─────────┼─────────┼─────────┼────┤
-//    │ no │  mprv  │ vold │ mnxt │  no  │   │ no │ LGUI(-) │ LGUI(0) │ LGUI(=) │ no │
-//    ├────┼────────┼──────┼──────┼──────┤   ├────┼─────────┼─────────┼─────────┼────┤
-//    │ no │   no   │ mute │  no  │  no  │   │ no │ DT_DOWN │ DT_PRNT │  DT_UP  │ no │
-//    └────┴────────┼──────┼──────┼──────┤   ├────┼─────────┼─────────┼─────────┴────┘
-//                  │  no  │  no  │ mply │   │ no │   no    │   no    │
-//                  └──────┴──────┴──────┘   └────┴─────────┴─────────┘
+//    ┌────┬──────┬──────┬──────┬────────┐   ┌────┬─────────┬─────────┬─────────┬────┐
+//    │ no │ vold │ mute │ volu │   no   │   │ no │ RGB_HUD │ RGB_TOG │ RGB_HUI │ no │
+//    ├────┼──────┼──────┼──────┼────────┤   ├────┼─────────┼─────────┼─────────┼────┤
+//    │ no │ mprv │ mply │ mnxt │ MEH(k) │   │ no │ LGUI(-) │ LGUI(0) │ LGUI(=) │ no │
+//    ├────┼──────┼──────┼──────┼────────┤   ├────┼─────────┼─────────┼─────────┼────┤
+//    │ no │  no  │  no  │  no  │   no   │   │ no │ DT_DOWN │ DT_PRNT │  DT_UP  │ no │
+//    └────┴──────┼──────┼──────┼────────┤   ├────┼─────────┼─────────┼─────────┴────┘
+//                │  no  │  no  │   no   │   │ no │   no    │   no    │
+//                └──────┴──────┴────────┘   └────┴─────────┴─────────┘
 [5] = LAYOUT_split_3x5_3(
-  KC_NO , MEH(KC_K) , KC_VOLU , KC_NO   , KC_NO   ,     KC_NO , RGB_HUD       , RGB_TOG    , RGB_HUI      , KC_NO,
-  KC_NO , KC_MPRV   , KC_VOLD , KC_MNXT , KC_NO   ,     KC_NO , LGUI(KC_MINS) , LGUI(KC_0) , LGUI(KC_EQL) , KC_NO,
-  KC_NO , KC_NO     , KC_MUTE , KC_NO   , KC_NO   ,     KC_NO , DT_DOWN       , DT_PRNT    , DT_UP        , KC_NO,
-                      KC_NO   , KC_NO   , KC_MPLY ,     KC_NO , KC_NO         , KC_NO
+  KC_NO , KC_VOLD , KC_MUTE , KC_VOLU , KC_NO     ,     KC_NO , RGB_HUD       , RGB_TOG    , RGB_HUI      , KC_NO,
+  KC_NO , KC_MPRV , KC_MPLY , KC_MNXT , MEH(KC_K) ,     KC_NO , LGUI(KC_MINS) , LGUI(KC_0) , LGUI(KC_EQL) , KC_NO,
+  KC_NO , KC_NO   , KC_NO   , KC_NO   , KC_NO     ,     KC_NO , DT_DOWN       , DT_PRNT    , DT_UP        , KC_NO,
+                    KC_NO   , KC_NO   , KC_NO     ,     KC_NO , KC_NO         , KC_NO
 )
 };
 
