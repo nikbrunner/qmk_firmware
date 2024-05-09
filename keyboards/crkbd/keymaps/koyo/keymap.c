@@ -18,6 +18,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 
+enum custom_keycodes {
+    SS_TILD_SLSH = SAFE_RANGE,
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    ┌───────────┬───────────┬───────────┬────────────┬────────────┐   ┌─────────────┬────────────┬───────────┬───────────┬───────────┐
 //    │     q     │     w     │     e     │     r      │     t      │   │      y      │     u      │     i     │     o     │     p     │
@@ -51,20 +55,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                             KC_NO      , KC_NO      , TO(0)      ,     KC_DEL  , KC_NO     , KC_NO
 ),
 
-//    ┌───┬───┬─────┬───────┬─────┐   ┌─────┬───────┬─────┬───┬───┐
-//    │ ^ │ + │  #  │   %   │  $  │   │  <  │   {   │  "  │ } │ > │
-//    ├───┼───┼─────┼───────┼─────┤   ├─────┼───────┼─────┼───┼───┤
-//    │ ! │ - │  &  │   ?   │  |  │   │  =  │   [   │  '  │ ] │ : │
-//    ├───┼───┼─────┼───────┼─────┤   ├─────┼───────┼─────┼───┼───┤
-//    │ ~ │ _ │  *  │   @   │ no  │   │  \  │   (   │  `  │ ) │ / │
-//    └───┴───┼─────┼───────┼─────┤   ├─────┼───────┼─────┼───┴───┘
-//            │     │ TO(0) │     │   │     │ TO(0) │     │
-//            └─────┴───────┴─────┘   └─────┴───────┴─────┘
+//    ┌───┬───┬─────┬───────┬──────────────┐   ┌─────┬───────┬─────┬───┬───┐
+//    │ ^ │ + │  #  │   %   │      $       │   │  <  │   {   │  "  │ } │ > │
+//    ├───┼───┼─────┼───────┼──────────────┤   ├─────┼───────┼─────┼───┼───┤
+//    │ ! │ - │  &  │   ?   │      |       │   │  =  │   [   │  '  │ ] │ : │
+//    ├───┼───┼─────┼───────┼──────────────┤   ├─────┼───────┼─────┼───┼───┤
+//    │ ~ │ _ │  *  │   @   │ SS_TILD_SLSH │   │  \  │   (   │  `  │ ) │ / │
+//    └───┴───┼─────┼───────┼──────────────┤   ├─────┼───────┼─────┼───┴───┘
+//            │     │ TO(0) │              │   │     │ TO(0) │     │
+//            └─────┴───────┴──────────────┘   └─────┴───────┴─────┘
 [2] = LAYOUT_split_3x5_3(
-  KC_CIRC , KC_PLUS , KC_HASH , KC_PERC , KC_DLR  ,     KC_LT   , KC_LCBR , KC_DQUO , KC_RCBR , KC_GT  ,
-  KC_EXLM , KC_MINS , KC_AMPR , KC_QUES , KC_PIPE ,     KC_EQL  , KC_LBRC , KC_QUOT , KC_RBRC , KC_COLN,
-  KC_TILD , KC_UNDS , KC_ASTR , KC_AT   , KC_NO   ,     KC_BSLS , KC_LPRN , KC_GRV  , KC_RPRN , KC_SLSH,
-                      KC_TRNS , TO(0)   , KC_TRNS ,     KC_TRNS , TO(0)   , KC_TRNS
+  KC_CIRC , KC_PLUS , KC_HASH , KC_PERC , KC_DLR       ,     KC_LT   , KC_LCBR , KC_DQUO , KC_RCBR , KC_GT  ,
+  KC_EXLM , KC_MINS , KC_AMPR , KC_QUES , KC_PIPE      ,     KC_EQL  , KC_LBRC , KC_QUOT , KC_RBRC , KC_COLN,
+  KC_TILD , KC_UNDS , KC_ASTR , KC_AT   , SS_TILD_SLSH ,     KC_BSLS , KC_LPRN , KC_GRV  , KC_RPRN , KC_SLSH,
+                      KC_TRNS , TO(0)   , KC_TRNS      ,     KC_TRNS , TO(0)   , KC_TRNS
 ),
 
 //    ┌──────────┬─────────┬──────┬──────┬─────┐   ┌──────┬──────┬──────┬──────┬──────┐
@@ -125,3 +129,17 @@ combo_t key_combos[] = {
     COMBO(togg_layer_sym_combo, TO(2)),
     COMBO(togg_caps_word_combo, CW_TOGG),
 };
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case SS_TILD_SLSH:
+            if (record->event.pressed) {
+                SEND_STRING("~/");
+            } else {
+                // when keycode is released
+            }
+            break;
+    }
+
+    return true;
+}
