@@ -28,7 +28,14 @@ enum layers {
     LY_MED
 };
 
-enum custom_keycodes { SS_TILD_SLSH = SAFE_RANGE, SS_WA, SS_WQ };
+enum custom_keycodes {
+    //
+    SS_TILD_SLSH = SAFE_RANGE,
+    SS_VIM_WQA,
+    SS_VIM_WQ,
+    SS_VIM_WA,
+    SS_VIM_ENTER,
+};
 
 enum tap_dance_codes {
     //
@@ -97,12 +104,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    ├──────────┼─────────┼──────┼──────┼─────┤   ├──────┼──────┼──────┼──────┼──────┤
 //    │    no    │   no    │  no  │  no  │ no  │   │ kp_- │ kp_1 │ kp_2 │ kp_3 │ kp_/ │
 //    └──────────┴─────────┼──────┼──────┼─────┤   ├──────┼──────┼──────┼──────┴──────┘
-//                         │      │      │     │   │  ,   │  .   │      │
+//                         │      │      │     │   │      │  .   │  ,   │
 //                         └──────┴──────┴─────┘   └──────┴──────┴──────┘
   HYPR(KC_NO) , MEH(KC_NO) , KC_NO   , KC_NO   , KC_NO   ,     KC_PPLS , KC_P7  , KC_P8   , KC_P9 , KC_PAST,
   KC_LGUI     , KC_LALT    , KC_LCTL , KC_LSFT , KC_NO   ,     KC_PEQL , KC_P4  , KC_P5   , KC_P6 , KC_COLN,
   KC_NO       , KC_NO      , KC_NO   , KC_NO   , KC_NO   ,     KC_PMNS , KC_P1  , KC_P2   , KC_P3 , KC_PSLS,
-                             KC_TRNS , KC_TRNS , KC_TRNS ,     KC_COMM , KC_DOT , KC_TRNS
+                             KC_TRNS , KC_TRNS , KC_TRNS ,     KC_TRNS , KC_DOT , KC_COMM
 ),
 
 [LY_FUN] = LAYOUT_split_3x5_3(
@@ -140,25 +147,49 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // clang-format on
 
 // COMBO ================================================================================
-const uint16_t PROGMEM togg_layer_ext_combo[] = {LT(LY_EXT, KC_SPC), LT(LY_MED, KC_BSPC), COMBO_END};
-const uint16_t PROGMEM togg_layer_sym_combo[] = {LT(LY_SYM, KC_ESC), LT(LY_SYM, KC_ENT), COMBO_END};
-const uint16_t PROGMEM togg_caps_word_combo[] = {LSFT_T(KC_V), RSFT_T(KC_M), COMBO_END};
-const uint16_t PROGMEM backspace[]            = {KC_H, KC_J, COMBO_END};
-const uint16_t PROGMEM save[]                 = {KC_W, KC_A, COMBO_END};
-const uint16_t PROGMEM save_quit[]            = {KC_W, KC_Q, COMBO_END};
-const uint16_t PROGMEM num_zero[]             = {KC_P4, KC_P5, COMBO_END};
-const uint16_t PROGMEM osm_hypr[]             = {KC_D, KC_K, COMBO_END};
+const uint16_t PROGMEM togg_layer_ext[] = {LT(LY_EXT, KC_SPC), LT(LY_MED, KC_BSPC), COMBO_END};
+const uint16_t PROGMEM togg_layer_sym[] = {LT(LY_SYM, KC_ESC), LT(LY_SYM, KC_ENT), COMBO_END};
+
+const uint16_t PROGMEM caps_word[] = {LSFT_T(KC_V), RSFT_T(KC_M), COMBO_END};
+const uint16_t PROGMEM osm_hypr[]  = {LCTL_T(KC_C), RCTL_T(KC_COMM), COMBO_END};
+
+// Left Side Vim
+const uint16_t PROGMEM vim_wqa[] = {KC_S, KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM vim_wq[]  = {KC_D, KC_F, COMBO_END};
+// Right Side Vim
+const uint16_t PROGMEM vim_wa[]    = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM vim_enter[] = {KC_J, KC_K, KC_L, COMBO_END};
+// Combined
+const uint16_t PROGMEM esc[] = {KC_D, KC_K, COMBO_END};
+
+const uint16_t PROGMEM gui_scln[] = {KC_W, KC_O, COMBO_END};
+const uint16_t PROGMEM hypr_r[]   = {KC_E, KC_I, COMBO_END};
+
+const uint16_t PROGMEM num_zero[]  = {KC_P4, KC_P6, COMBO_END};
+const uint16_t PROGMEM num_dot[]   = {KC_P2, KC_P3, COMBO_END};
+const uint16_t PROGMEM num_comma[] = {KC_P1, KC_P2, COMBO_END};
 
 // clang-format off
 combo_t key_combos[] = {
-    COMBO(togg_layer_ext_combo, TO(LY_EXT)),
-    COMBO(togg_layer_sym_combo, TO(LY_SYM)),
-    COMBO(togg_caps_word_combo, CW_TOGG),
-    COMBO(backspace, KC_BSPC),
-    COMBO(save, SS_WA),
-    COMBO(save_quit, SS_WQ),
+    COMBO(togg_layer_ext, TO(LY_EXT)),
+    COMBO(togg_layer_sym, TO(LY_SYM)),
+
+    COMBO(caps_word, CW_TOGG),
     COMBO(osm_hypr, OSM(MOD_HYPR)),
-    COMBO(num_zero, KC_P0),
+
+    COMBO(vim_wqa, SS_VIM_WQA),
+    COMBO(vim_wq, SS_VIM_WQ),
+    COMBO(vim_wa, SS_VIM_WA),
+    COMBO(vim_enter, SS_VIM_ENTER),
+
+    COMBO(esc, KC_ESC),
+
+    COMBO(gui_scln, LGUI(KC_SCLN)),
+    COMBO(hypr_r, HYPR(KC_R)),
+
+    COMBO(num_zero, KC_0),
+    COMBO(num_dot, KC_COMMA),
+    COMBO(num_dot, KC_DOT),
 };
 // clang-format on
 
@@ -170,17 +201,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("~/");
             }
             break;
-        case SS_WA:
+        case SS_VIM_WQA:
             if (record->event.pressed) {
-                tap_code(KC_ESC);
+                SEND_STRING(":wqa!");
+                tap_code(KC_ENT);
+            }
+            break;
+        case SS_VIM_WQ:
+            if (record->event.pressed) {
+                SEND_STRING(":wq");
+                tap_code(KC_ENT);
+            }
+            break;
+        case SS_VIM_WA:
+            if (record->event.pressed) {
                 SEND_STRING(":wa");
                 tap_code(KC_ENT);
             }
             break;
-        case SS_WQ:
+        case SS_VIM_ENTER:
             if (record->event.pressed) {
-                tap_code(KC_ESC);
-                SEND_STRING(":wq");
+                SEND_STRING("nvim .");
                 tap_code(KC_ENT);
             }
             break;
