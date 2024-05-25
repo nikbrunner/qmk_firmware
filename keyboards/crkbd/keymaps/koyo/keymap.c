@@ -35,6 +35,8 @@ enum custom_keycodes {
     SS_VIM_WQ,
     SS_VIM_WA,
     SS_VIM_ENTER,
+    SS_TODO,
+    SS_BCD
 };
 
 enum tap_dance_codes {
@@ -97,98 +99,90 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [LY_NUM] = LAYOUT_split_3x5_3(
-//    ┌──────────┬─────────┬──────┬──────┬─────┐   ┌──────┬──────┬──────┬──────┬──────┐
-//    │ HYPR(no) │ MEH(no) │  no  │  no  │ no  │   │ kp_+ │ kp_7 │ kp_8 │ kp_9 │ kp_* │
-//    ├──────────┼─────────┼──────┼──────┼─────┤   ├──────┼──────┼──────┼──────┼──────┤
-//    │   lgui   │  lalt   │ lctl │ lsft │ no  │   │ kp_= │ kp_4 │ kp_5 │ kp_6 │  :   │
-//    ├──────────┼─────────┼──────┼──────┼─────┤   ├──────┼──────┼──────┼──────┼──────┤
-//    │    no    │   no    │  no  │  no  │ no  │   │ kp_- │ kp_1 │ kp_2 │ kp_3 │ kp_/ │
-//    └──────────┴─────────┼──────┼──────┼─────┤   ├──────┼──────┼──────┼──────┴──────┘
-//                         │      │      │     │   │      │  .   │  ,   │
-//                         └──────┴──────┴─────┘   └──────┴──────┴──────┘
-  HYPR(KC_NO) , MEH(KC_NO) , KC_NO   , KC_NO   , KC_NO   ,     KC_PPLS , KC_P7  , KC_P8   , KC_P9 , KC_PAST,
-  KC_LGUI     , KC_LALT    , KC_LCTL , KC_LSFT , KC_NO   ,     KC_PEQL , KC_P4  , KC_P5   , KC_P6 , KC_COLN,
-  KC_NO       , KC_NO      , KC_NO   , KC_NO   , KC_NO   ,     KC_PMNS , KC_P1  , KC_P2   , KC_P3 , KC_PSLS,
-                             KC_TRNS , KC_TRNS , KC_TRNS ,     KC_TRNS , KC_DOT , KC_COMM
+//    ┌──────┬──────┬──────┬──────┬─────────┐   ┌──────┬──────┬──────┬──────┬──────┐
+//    │  no  │  no  │  no  │  no  │ SS_TODO │   │ kp_+ │ kp_7 │ kp_8 │ kp_9 │ kp_* │
+//    ├──────┼──────┼──────┼──────┼─────────┤   ├──────┼──────┼──────┼──────┼──────┤
+//    │ lgui │ lalt │ lctl │ lsft │   no    │   │ kp_= │ kp_4 │ kp_5 │ kp_6 │  :   │
+//    ├──────┼──────┼──────┼──────┼─────────┤   ├──────┼──────┼──────┼──────┼──────┤
+//    │  no  │  no  │  no  │  no  │ SS_BCD  │   │ kp_- │ kp_1 │ kp_2 │ kp_3 │ kp_/ │
+//    └──────┴──────┼──────┼──────┼─────────┤   ├──────┼──────┼──────┼──────┴──────┘
+//                  │      │      │         │   │      │ kp_0 │      │
+//                  └──────┴──────┴─────────┘   └──────┴──────┴──────┘
+  KC_NO   , KC_NO   , KC_NO   , KC_NO   , SS_TODO ,     KC_PPLS , KC_P7 , KC_P8   , KC_P9 , KC_PAST,
+  KC_LGUI , KC_LALT , KC_LCTL , KC_LSFT , KC_NO   ,     KC_PEQL , KC_P4 , KC_P5   , KC_P6 , KC_COLN,
+  KC_NO   , KC_NO   , KC_NO   , KC_NO   , SS_BCD  ,     KC_PMNS , KC_P1 , KC_P2   , KC_P3 , KC_PSLS,
+                      KC_TRNS , KC_TRNS , KC_TRNS ,     KC_TRNS , KC_P0 , KC_TRNS
 ),
 
 [LY_FUN] = LAYOUT_split_3x5_3(
-//    ┌────┬────┬────┬────┬─────┐   ┌────┬──────┬──────┬─────────┬──────────┐
-//    │ no │ f7 │ f8 │ f9 │ f12 │   │ no │  no  │  no  │ MEH(no) │ HYPR(no) │
-//    ├────┼────┼────┼────┼─────┤   ├────┼──────┼──────┼─────────┼──────────┤
-//    │ no │ f4 │ f5 │ f6 │ f11 │   │ no │ rsft │ rctl │  lalt   │   rgui   │
-//    ├────┼────┼────┼────┼─────┤   ├────┼──────┼──────┼─────────┼──────────┤
-//    │ no │ f1 │ f2 │ f3 │ f10 │   │ no │  no  │  no  │   no    │    no    │
-//    └────┴────┼────┼────┼─────┤   ├────┼──────┼──────┼─────────┴──────────┘
-//              │ no │ no │ no  │   │ no │  no  │  no  │
-//              └────┴────┴─────┘   └────┴──────┴──────┘
-  KC_NO , KC_F7 , KC_F8 , KC_F9 , KC_F12 ,     KC_NO , KC_NO   , KC_NO   , MEH(KC_NO) , HYPR(KC_NO),
-  KC_NO , KC_F4 , KC_F5 , KC_F6 , KC_F11 ,     KC_NO , KC_RSFT , KC_RCTL , KC_LALT    , KC_RGUI    ,
-  KC_NO , KC_F1 , KC_F2 , KC_F3 , KC_F10 ,     KC_NO , KC_NO   , KC_NO   , KC_NO      , KC_NO      ,
-                  KC_NO , KC_NO , KC_NO  ,     KC_NO , KC_NO   , KC_NO
+//    ┌────┬────┬────┬─────┬────┐   ┌────┬──────┬──────┬──────┬──────┐
+//    │ f7 │ f8 │ f9 │ f12 │ no │   │ no │  no  │  no  │  no  │  no  │
+//    ├────┼────┼────┼─────┼────┤   ├────┼──────┼──────┼──────┼──────┤
+//    │ f4 │ f5 │ f6 │ f11 │ no │   │ no │ rsft │ rctl │ lalt │ rgui │
+//    ├────┼────┼────┼─────┼────┤   ├────┼──────┼──────┼──────┼──────┤
+//    │ f1 │ f2 │ f3 │ f10 │ no │   │ no │  no  │  no  │  no  │  no  │
+//    └────┴────┼────┼─────┼────┤   ├────┼──────┼──────┼──────┴──────┘
+//              │ no │ no  │ no │   │ no │  no  │  no  │
+//              └────┴─────┴────┘   └────┴──────┴──────┘
+  KC_F7 , KC_F8 , KC_F9 , KC_F12 , KC_NO ,     KC_NO , KC_NO   , KC_NO   , KC_NO   , KC_NO  ,
+  KC_F4 , KC_F5 , KC_F6 , KC_F11 , KC_NO ,     KC_NO , KC_RSFT , KC_RCTL , KC_LALT , KC_RGUI,
+  KC_F1 , KC_F2 , KC_F3 , KC_F10 , KC_NO ,     KC_NO , KC_NO   , KC_NO   , KC_NO   , KC_NO  ,
+                  KC_NO , KC_NO  , KC_NO ,     KC_NO , KC_NO   , KC_NO
 ),
 
 [LY_MED] = LAYOUT_split_3x5_3(
-//    ┌────┬──────┬──────┬──────┬────────┐   ┌────┬─────────┬─────────┬─────────┬────┐
-//    │ no │ vold │ mute │ volu │   no   │   │ no │ RGB_HUD │ RGB_TOG │ RGB_HUI │ no │
-//    ├────┼──────┼──────┼──────┼────────┤   ├────┼─────────┼─────────┼─────────┼────┤
-//    │ no │ mprv │ mply │ mnxt │ MEH(k) │   │ no │ LGUI(-) │ LGUI(0) │ LGUI(=) │ no │
-//    ├────┼──────┼──────┼──────┼────────┤   ├────┼─────────┼─────────┼─────────┼────┤
-//    │ no │  no  │  no  │  no  │   no   │   │ no │ DT_DOWN │ DT_PRNT │  DT_UP  │ no │
-//    └────┴──────┼──────┼──────┼────────┤   ├────┼─────────┼─────────┼─────────┴────┘
-//                │  no  │  no  │   no   │   │ no │   no    │   no    │
-//                └──────┴──────┴────────┘   └────┴─────────┴─────────┘
-  KC_NO , KC_VOLD , KC_MUTE , KC_VOLU , KC_NO     ,     KC_NO , RGB_HUD       , RGB_TOG    , RGB_HUI      , KC_NO,
-  KC_NO , KC_MPRV , KC_MPLY , KC_MNXT , MEH(KC_K) ,     KC_NO , LGUI(KC_MINS) , LGUI(KC_0) , LGUI(KC_EQL) , KC_NO,
-  KC_NO , KC_NO   , KC_NO   , KC_NO   , KC_NO     ,     KC_NO , DT_DOWN       , DT_PRNT    , DT_UP        , KC_NO,
-                    KC_NO   , KC_NO   , KC_NO     ,     KC_NO , KC_NO         , KC_NO
+//    ┌─────────┬──────┬──────┬──────┬────────┐   ┌────┬─────────┬─────────┬─────────┬────┐
+//    │ C(G(q)) │ vold │ mute │ volu │   no   │   │ no │ RGB_HUD │ RGB_TOG │ RGB_HUI │ no │
+//    ├─────────┼──────┼──────┼──────┼────────┤   ├────┼─────────┼─────────┼─────────┼────┤
+//    │   no    │ mprv │ mply │ mnxt │ MEH(k) │   │ no │ LGUI(-) │ LGUI(0) │ LGUI(=) │ no │
+//    ├─────────┼──────┼──────┼──────┼────────┤   ├────┼─────────┼─────────┼─────────┼────┤
+//    │   no    │  no  │  no  │  no  │   no   │   │ no │ DT_DOWN │ DT_PRNT │  DT_UP  │ no │
+//    └─────────┴──────┼──────┼──────┼────────┤   ├────┼─────────┼─────────┼─────────┴────┘
+//                     │  no  │  no  │   no   │   │ no │   no    │   no    │
+//                     └──────┴──────┴────────┘   └────┴─────────┴─────────┘
+  C(G(KC_Q)) , KC_VOLD , KC_MUTE , KC_VOLU , KC_NO     ,     KC_NO , RGB_HUD       , RGB_TOG    , RGB_HUI      , KC_NO,
+  KC_NO      , KC_MPRV , KC_MPLY , KC_MNXT , MEH(KC_K) ,     KC_NO , LGUI(KC_MINS) , LGUI(KC_0) , LGUI(KC_EQL) , KC_NO,
+  KC_NO      , KC_NO   , KC_NO   , KC_NO   , KC_NO     ,     KC_NO , DT_DOWN       , DT_PRNT    , DT_UP        , KC_NO,
+                         KC_NO   , KC_NO   , KC_NO     ,     KC_NO , KC_NO         , KC_NO
 )
 };
 // clang-format on
 
 // COMBO ================================================================================
+// LY_BAS: Left & Right
 const uint16_t PROGMEM togg_layer_ext[] = {LT(LY_EXT, KC_SPC), LT(LY_MED, KC_BSPC), COMBO_END};
 const uint16_t PROGMEM togg_layer_sym[] = {LT(LY_SYM, KC_ESC), LT(LY_SYM, KC_ENT), COMBO_END};
 
 const uint16_t PROGMEM caps_word[] = {LSFT_T(KC_V), RSFT_T(KC_M), COMBO_END};
-const uint16_t PROGMEM osm_hypr[]  = {LCTL_T(KC_C), RCTL_T(KC_COMM), COMBO_END};
 
-// Left Side Vim
-const uint16_t PROGMEM vim_wqa[] = {KC_S, KC_D, KC_F, COMBO_END};
-const uint16_t PROGMEM vim_wq[]  = {KC_D, KC_F, COMBO_END};
-// Right Side Vim
-const uint16_t PROGMEM vim_wa[]    = {KC_J, KC_K, COMBO_END};
-const uint16_t PROGMEM vim_enter[] = {KC_J, KC_K, KC_L, COMBO_END};
-// Combined
-const uint16_t PROGMEM esc[] = {KC_D, KC_K, COMBO_END};
+const uint16_t PROGMEM gui_scln[] = {KC_E, KC_I, COMBO_END};
+const uint16_t PROGMEM hypr_r[]   = {KC_D, KC_K, COMBO_END};
 
-const uint16_t PROGMEM gui_scln[] = {KC_W, KC_O, COMBO_END};
-const uint16_t PROGMEM hypr_r[]   = {KC_E, KC_I, COMBO_END};
+// LY_BAS: Right Side
+const uint16_t PROGMEM bracket_left[]  = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM bracket_right[] = {KC_K, KC_L, COMBO_END};
 
-const uint16_t PROGMEM num_zero[]  = {KC_P4, KC_P6, COMBO_END};
+// LY_NUM: Right
 const uint16_t PROGMEM num_dot[]   = {KC_P2, KC_P3, COMBO_END};
 const uint16_t PROGMEM num_comma[] = {KC_P1, KC_P2, COMBO_END};
 
 // clang-format off
 combo_t key_combos[] = {
+    // LY_BAS: Left & Right
     COMBO(togg_layer_ext, TO(LY_EXT)),
     COMBO(togg_layer_sym, TO(LY_SYM)),
 
     COMBO(caps_word, CW_TOGG),
-    COMBO(osm_hypr, OSM(MOD_HYPR)),
-
-    COMBO(vim_wqa, SS_VIM_WQA),
-    COMBO(vim_wq, SS_VIM_WQ),
-    COMBO(vim_wa, SS_VIM_WA),
-    COMBO(vim_enter, SS_VIM_ENTER),
-
-    COMBO(esc, KC_ESC),
 
     COMBO(gui_scln, LGUI(KC_SCLN)),
     COMBO(hypr_r, HYPR(KC_R)),
 
-    COMBO(num_zero, KC_0),
-    COMBO(num_dot, KC_COMMA),
+    // LY_BAS: Right
+    COMBO(bracket_left, KC_LBRC),
+    COMBO(bracket_right, KC_RBRC),
+
+    // LY_NUM: Right
+    COMBO(num_comma, KC_COMMA),
     COMBO(num_dot, KC_DOT),
 };
 // clang-format on
@@ -207,14 +201,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code(KC_ENT);
             }
             break;
-        case SS_VIM_WQ:
-            if (record->event.pressed) {
-                SEND_STRING(":wq");
-                tap_code(KC_ENT);
-            }
-            break;
         case SS_VIM_WA:
             if (record->event.pressed) {
+                tap_code(KC_ESC);
                 SEND_STRING(":wa");
                 tap_code(KC_ENT);
             }
@@ -223,6 +212,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 SEND_STRING("nvim .");
                 tap_code(KC_ENT);
+            }
+            break;
+        case SS_TODO:
+            if (record->event.pressed) {
+                SEND_STRING("TODO");
+            }
+            break;
+        case SS_BCD:
+            if (record->event.pressed) {
+                SEND_STRING("BCD-");
             }
             break;
     }
