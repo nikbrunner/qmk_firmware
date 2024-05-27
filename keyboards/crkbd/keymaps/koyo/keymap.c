@@ -106,12 +106,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    ├──────┼──────┼──────┼──────┼─────────┤   ├──────┼──────┼──────┼──────┼──────┤
 //    │  no  │  no  │  no  │  no  │ SS_BCD  │   │ kp_- │ kp_1 │ kp_2 │ kp_3 │ kp_/ │
 //    └──────┴──────┼──────┼──────┼─────────┤   ├──────┼──────┼──────┼──────┴──────┘
-//                  │      │      │         │   │      │ kp_0 │      │
+//                  │      │      │         │   │      │      │      │
 //                  └──────┴──────┴─────────┘   └──────┴──────┴──────┘
-  KC_NO   , KC_NO   , KC_NO   , KC_NO   , SS_TODO ,     KC_PPLS , KC_P7 , KC_P8   , KC_P9 , KC_PAST,
-  KC_LGUI , KC_LALT , KC_LCTL , KC_LSFT , KC_NO   ,     KC_PEQL , KC_P4 , KC_P5   , KC_P6 , KC_COLN,
-  KC_NO   , KC_NO   , KC_NO   , KC_NO   , SS_BCD  ,     KC_PMNS , KC_P1 , KC_P2   , KC_P3 , KC_PSLS,
-                      KC_TRNS , KC_TRNS , KC_TRNS ,     KC_TRNS , KC_P0 , KC_TRNS
+  KC_NO   , KC_NO   , KC_NO   , KC_NO   , SS_TODO ,     KC_PPLS , KC_P7   , KC_P8   , KC_P9 , KC_PAST,
+  KC_LGUI , KC_LALT , KC_LCTL , KC_LSFT , KC_NO   ,     KC_PEQL , KC_P4   , KC_P5   , KC_P6 , KC_COLN,
+  KC_NO   , KC_NO   , KC_NO   , KC_NO   , SS_BCD  ,     KC_PMNS , KC_P1   , KC_P2   , KC_P3 , KC_PSLS,
+                      KC_TRNS , KC_TRNS , KC_TRNS ,     KC_TRNS , KC_TRNS , KC_TRNS
 ),
 
 [LY_FUN] = LAYOUT_split_3x5_3(
@@ -155,14 +155,22 @@ const uint16_t PROGMEM togg_layer_sym[] = {LT(LY_SYM, KC_ESC), LT(LY_SYM, KC_ENT
 
 const uint16_t PROGMEM caps_word[] = {LSFT_T(KC_V), RSFT_T(KC_M), COMBO_END};
 
-const uint16_t PROGMEM gui_scln[] = {KC_E, KC_I, COMBO_END};
+const uint16_t PROGMEM gui_scln[] = {KC_S, KC_L, COMBO_END};
 const uint16_t PROGMEM hypr_r[]   = {KC_D, KC_K, COMBO_END};
+// const uint16_t PROGMEM osm_hypr[] = {KC_F, KC_J, COMBO_END};
 
-// LY_BAS: Right Side
+// LY_BAS: Left
+const uint16_t PROGMEM vim_wqa[] = {KC_S, KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM vim_wa[]  = {KC_D, KC_F, COMBO_END};
+
+// LY_BAS: Right
+const uint16_t PROGMEM backspace[]     = {KC_H, KC_J, COMBO_END};
 const uint16_t PROGMEM bracket_left[]  = {KC_J, KC_K, COMBO_END};
 const uint16_t PROGMEM bracket_right[] = {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM vim_enter[]     = {KC_J, KC_K, KC_L, COMBO_END};
 
 // LY_NUM: Right
+const uint16_t PROGMEM num_zero[]  = {KC_P4, KC_P5, COMBO_END};
 const uint16_t PROGMEM num_dot[]   = {KC_P2, KC_P3, COMBO_END};
 const uint16_t PROGMEM num_comma[] = {KC_P1, KC_P2, COMBO_END};
 
@@ -176,12 +184,20 @@ combo_t key_combos[] = {
 
     COMBO(gui_scln, LGUI(KC_SCLN)),
     COMBO(hypr_r, HYPR(KC_R)),
+    // COMBO(osm_hypr, OSM(MOD_HYPR)),
+
+    // LY_BAS: Left
+    COMBO(vim_wqa, SS_VIM_WQA),
+    COMBO(vim_wa, SS_VIM_WA),
 
     // LY_BAS: Right
+    COMBO(backspace, KC_BSPC),
     COMBO(bracket_left, KC_LBRC),
     COMBO(bracket_right, KC_RBRC),
+    COMBO(vim_enter, SS_VIM_ENTER),
 
     // LY_NUM: Right
+    COMBO(num_zero, KC_0),
     COMBO(num_comma, KC_COMMA),
     COMBO(num_dot, KC_DOT),
 };
