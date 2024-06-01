@@ -152,6 +152,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(LY_EXT, KC_SPC):
+        case KC_Z:
+        case KC_X:
+        case KC_SLSH:
+        case KC_DOT:
             return TAPPING_TERM + 25;
         default:
             return TAPPING_TERM;
@@ -165,19 +169,14 @@ const uint16_t PROGMEM togg_layer_sym[] = {LT(LY_SYM, KC_ESC), LT(LY_SYM, KC_ENT
 
 const uint16_t PROGMEM caps_word[] = {LSFT_T(KC_V), RSFT_T(KC_M), COMBO_END};
 
-const uint16_t PROGMEM gui_scln[] = {KC_S, KC_L, COMBO_END};
-const uint16_t PROGMEM hypr_r[]   = {KC_D, KC_K, COMBO_END};
-// const uint16_t PROGMEM osm_hypr[] = {KC_F, KC_J, COMBO_END};
+const uint16_t PROGMEM app_switcher[] = {KC_D, KC_K, COMBO_END};
+const uint16_t PROGMEM raycast[]      = {KC_F, KC_J, COMBO_END};
 
 // LY_BAS: Left
-const uint16_t PROGMEM vim_wqa[] = {KC_S, KC_D, KC_F, COMBO_END};
-const uint16_t PROGMEM vim_wa[]  = {KC_D, KC_F, COMBO_END};
 
 // LY_BAS: Right
-const uint16_t PROGMEM backspace[]     = {KC_H, KC_J, COMBO_END};
 const uint16_t PROGMEM bracket_left[]  = {KC_J, KC_K, COMBO_END};
 const uint16_t PROGMEM bracket_right[] = {KC_K, KC_L, COMBO_END};
-const uint16_t PROGMEM vim_enter[]     = {KC_J, KC_K, KC_L, COMBO_END};
 
 // LY_NUM: Right
 const uint16_t PROGMEM num_zero[]  = {KC_P4, KC_P5, COMBO_END};
@@ -186,25 +185,21 @@ const uint16_t PROGMEM num_comma[] = {KC_P1, KC_P2, COMBO_END};
 
 // clang-format off
 combo_t key_combos[] = {
-    // LY_BAS: Left & Right
+    // LY_BAS
+    // Toggle layers
     COMBO(togg_layer_ext, TO(LY_EXT)),
     COMBO(togg_layer_sym, TO(LY_SYM)),
 
+    // Caps
     COMBO(caps_word, CW_TOGG),
 
-    COMBO(gui_scln, LGUI(KC_SCLN)),
-    COMBO(hypr_r, HYPR(KC_R)),
-    // COMBO(osm_hypr, OSM(MOD_HYPR)),
+    // Raycast
+    COMBO(raycast, LGUI(KC_SCLN)),
+    COMBO(app_switcher, HYPR(KC_R)),
 
-    // LY_BAS: Left
-    COMBO(vim_wqa, SS_VIM_WQA),
-    COMBO(vim_wa, SS_VIM_WA),
-
-    // LY_BAS: Right
-    COMBO(backspace, KC_BSPC),
+    // Brackets
     COMBO(bracket_left, KC_LBRC),
     COMBO(bracket_right, KC_RBRC),
-    COMBO(vim_enter, SS_VIM_ENTER),
 
     // LY_NUM: Right
     COMBO(num_zero, KC_0),
@@ -227,6 +222,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code(KC_ENT);
             }
             break;
+        case SS_VIM_WQ:
+            if (record->event.pressed) {
+                tap_code(KC_ESC);
+                SEND_STRING(":wq");
+                tap_code(KC_ENT);
+            }
+            break;
         case SS_VIM_WA:
             if (record->event.pressed) {
                 tap_code(KC_ESC);
@@ -236,7 +238,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case SS_VIM_ENTER:
             if (record->event.pressed) {
-                SEND_STRING("nvim .");
+                SEND_STRING("vim .");
                 tap_code(KC_ENT);
             }
             break;
