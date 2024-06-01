@@ -22,6 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define MASTER_LEFT
 #define TAPPING_TERM 165
+#define TAPPING_TERM_PER_KEY
 #define COMBO_TERM 35
 
 #ifdef RGBLIGHT_ENABLE

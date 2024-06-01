@@ -148,6 +148,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
+// Tapping Term
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LT(LY_EXT, KC_SPC):
+            return TAPPING_TERM + 25;
+        default:
+            return TAPPING_TERM;
+    }
+}
+
 // COMBO ================================================================================
 // LY_BAS: Left & Right
 const uint16_t PROGMEM togg_layer_ext[] = {LT(LY_EXT, KC_SPC), LT(LY_MED, KC_BSPC), COMBO_END};
