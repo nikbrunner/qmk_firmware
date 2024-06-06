@@ -31,12 +31,9 @@ enum layers {
 enum custom_keycodes {
     //
     SS_TILD_SLSH = SAFE_RANGE,
-    SS_VIM_WQA,
-    SS_VIM_WQ,
     SS_VIM_WA,
-    SS_VIM_ENTER,
     SS_TODO,
-    SS_BCD
+    SS_BCD,
 };
 
 enum tap_dance_codes {
@@ -67,19 +64,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [LY_EXT] = LAYOUT_split_3x5_3(
-//    ┌──────────────────┬──────────────────┬──────────────────┬──────────────────┬────────────┐   ┌──────┬────────┬───────────┬───────────┬────┐
-//    │     LGUI(q)      │     LGUI(w)      │     LGUI(e)      │     LGUI(r)      │  LGUI(t)   │   │  no  │ LAG(i) │  LGUI(`)  │ LGUI(tab) │ no │
-//    ├──────────────────┼──────────────────┼──────────────────┼──────────────────┼────────────┤   ├──────┼────────┼───────────┼───────────┼────┤
-//    │ TD(TD_EXT_GUI_A) │ TD(TD_EXT_GUI_S) │ TD(TD_EXT_GUI_D) │ TD(TD_EXT_GUI_F) │  LGUI(g)   │   │ left │  down  │    up     │   rght    │ no │
-//    ├──────────────────┼──────────────────┼──────────────────┼──────────────────┼────────────┤   ├──────┼────────┼───────────┼───────────┼────┤
-//    │     LGUI(z)      │     LGUI(x)      │     LGUI(c)      │     LGUI(v)      │  LGUI(b)   │   │  no  │   no   │ LSFT(tab) │    tab    │ no │
-//    └──────────────────┴──────────────────┼──────────────────┼──────────────────┼────────────┤   ├──────┼────────┼───────────┼───────────┴────┘
-//                                          │        no        │        no        │ TO(LY_BAS) │   │ del  │   no   │    no     │
-//                                          └──────────────────┴──────────────────┴────────────┘   └──────┴────────┴───────────┘
-  LGUI(KC_Q)       , LGUI(KC_W)       , LGUI(KC_E)       , LGUI(KC_R)       , LGUI(KC_T) ,     KC_NO   , LAG(KC_I) , LGUI(KC_GRV) , LGUI(KC_TAB) , KC_NO,
-  TD(TD_EXT_GUI_A) , TD(TD_EXT_GUI_S) , TD(TD_EXT_GUI_D) , TD(TD_EXT_GUI_F) , LGUI(KC_G) ,     KC_LEFT , KC_DOWN   , KC_UP        , KC_RGHT      , KC_NO,
-  LGUI(KC_Z)       , LGUI(KC_X)       , LGUI(KC_C)       , LGUI(KC_V)       , LGUI(KC_B) ,     KC_NO   , KC_NO     , LSFT(KC_TAB) , KC_TAB       , KC_NO,
-                                        KC_NO            , KC_NO            , TO(LY_BAS) ,     KC_DEL  , KC_NO     , KC_NO
+//    ┌──────────────────┬──────────────────┬──────────────────┬──────────────────┬────────────┐   ┌─────────┬────────┬───────────┬───────────┬────┐
+//    │     LGUI(q)      │     LGUI(w)      │     LGUI(e)      │     LGUI(r)      │  LGUI(t)   │   │ G(C(c)) │ LAG(i) │  LGUI(`)  │ LGUI(tab) │ no │
+//    ├──────────────────┼──────────────────┼──────────────────┼──────────────────┼────────────┤   ├─────────┼────────┼───────────┼───────────┼────┤
+//    │ TD(TD_EXT_GUI_A) │ TD(TD_EXT_GUI_S) │ TD(TD_EXT_GUI_D) │ TD(TD_EXT_GUI_F) │  LGUI(g)   │   │  left   │  down  │    up     │   rght    │ no │
+//    ├──────────────────┼──────────────────┼──────────────────┼──────────────────┼────────────┤   ├─────────┼────────┼───────────┼───────────┼────┤
+//    │     LGUI(z)      │     LGUI(x)      │     LGUI(c)      │     LGUI(v)      │  LGUI(b)   │   │   no    │   no   │ LSFT(tab) │    tab    │ no │
+//    └──────────────────┴──────────────────┼──────────────────┼──────────────────┼────────────┤   ├─────────┼────────┼───────────┼───────────┴────┘
+//                                          │        no        │        no        │ TO(LY_BAS) │   │   del   │   no   │    no     │
+//                                          └──────────────────┴──────────────────┴────────────┘   └─────────┴────────┴───────────┘
+  LGUI(KC_Q)       , LGUI(KC_W)       , LGUI(KC_E)       , LGUI(KC_R)       , LGUI(KC_T) ,     G(C(KC_C)) , LAG(KC_I) , LGUI(KC_GRV) , LGUI(KC_TAB) , KC_NO,
+  TD(TD_EXT_GUI_A) , TD(TD_EXT_GUI_S) , TD(TD_EXT_GUI_D) , TD(TD_EXT_GUI_F) , LGUI(KC_G) ,     KC_LEFT    , KC_DOWN   , KC_UP        , KC_RGHT      , KC_NO,
+  LGUI(KC_Z)       , LGUI(KC_X)       , LGUI(KC_C)       , LGUI(KC_V)       , LGUI(KC_B) ,     KC_NO      , KC_NO     , LSFT(KC_TAB) , KC_TAB       , KC_NO,
+                                        KC_NO            , KC_NO            , TO(LY_BAS) ,     KC_DEL     , KC_NO     , KC_NO
 ),
 
 [LY_SYM] = LAYOUT_split_3x5_3(
@@ -106,12 +103,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    ├──────┼──────┼──────┼──────┼─────────┤   ├──────┼──────┼──────┼──────┼──────┤
 //    │  no  │  no  │  no  │  no  │ SS_BCD  │   │ kp_- │ kp_1 │ kp_2 │ kp_3 │ kp_/ │
 //    └──────┴──────┼──────┼──────┼─────────┤   ├──────┼──────┼──────┼──────┴──────┘
-//                  │      │      │         │   │      │      │      │
+//                  │      │      │         │   │      │ kp_0 │      │
 //                  └──────┴──────┴─────────┘   └──────┴──────┴──────┘
-  KC_NO   , KC_NO   , KC_NO   , KC_NO   , SS_TODO ,     KC_PPLS , KC_P7   , KC_P8   , KC_P9 , KC_PAST,
-  KC_LGUI , KC_LALT , KC_LCTL , KC_LSFT , KC_NO   ,     KC_PEQL , KC_P4   , KC_P5   , KC_P6 , KC_COLN,
-  KC_NO   , KC_NO   , KC_NO   , KC_NO   , SS_BCD  ,     KC_PMNS , KC_P1   , KC_P2   , KC_P3 , KC_PSLS,
-                      KC_TRNS , KC_TRNS , KC_TRNS ,     KC_TRNS , KC_TRNS , KC_TRNS
+  KC_NO   , KC_NO   , KC_NO   , KC_NO   , SS_TODO ,     KC_PPLS , KC_P7 , KC_P8   , KC_P9 , KC_PAST,
+  KC_LGUI , KC_LALT , KC_LCTL , KC_LSFT , KC_NO   ,     KC_PEQL , KC_P4 , KC_P5   , KC_P6 , KC_COLN,
+  KC_NO   , KC_NO   , KC_NO   , KC_NO   , SS_BCD  ,     KC_PMNS , KC_P1 , KC_P2   , KC_P3 , KC_PSLS,
+                      KC_TRNS , KC_TRNS , KC_TRNS ,     KC_TRNS , KC_P0 , KC_TRNS
 ),
 
 [LY_FUN] = LAYOUT_split_3x5_3(
@@ -164,13 +161,13 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 // COMBO ================================================================================
 // LY_BAS: Left & Right
-const uint16_t PROGMEM togg_layer_ext[] = {LT(LY_EXT, KC_SPC), LT(LY_MED, KC_BSPC), COMBO_END};
-const uint16_t PROGMEM togg_layer_sym[] = {LT(LY_SYM, KC_ESC), LT(LY_SYM, KC_ENT), COMBO_END};
-
 const uint16_t PROGMEM caps_word[] = {LSFT_T(KC_V), RSFT_T(KC_M), COMBO_END};
 
+const uint16_t PROGMEM raycast[]      = {KC_E, KC_I, COMBO_END};
 const uint16_t PROGMEM app_switcher[] = {KC_D, KC_K, COMBO_END};
-const uint16_t PROGMEM raycast[]      = {KC_F, KC_J, COMBO_END};
+
+const uint16_t PROGMEM cm_colon[]   = {KC_F, KC_J, COMBO_END};
+const uint16_t PROGMEM ctrl_space[] = {LT(LY_EXT, KC_SPC), LT(LY_MED, KC_BSPC), COMBO_END};
 
 // LY_BAS: Left
 
@@ -185,26 +182,15 @@ const uint16_t PROGMEM num_comma[] = {KC_P1, KC_P2, COMBO_END};
 
 // clang-format off
 combo_t key_combos[] = {
-    // LY_BAS
-    // Toggle layers
-    COMBO(togg_layer_ext, TO(LY_EXT)),
-    COMBO(togg_layer_sym, TO(LY_SYM)),
-
-    // Caps
     COMBO(caps_word, CW_TOGG),
-
-    // Raycast
-    COMBO(raycast, LGUI(KC_SCLN)),
-    COMBO(app_switcher, HYPR(KC_R)),
-
-    // Brackets
+    COMBO(cm_colon, KC_COLN),
     COMBO(bracket_left, KC_LBRC),
     COMBO(bracket_right, KC_RBRC),
-
-    // LY_NUM: Right
-    COMBO(num_zero, KC_0),
     COMBO(num_comma, KC_COMMA),
     COMBO(num_dot, KC_DOT),
+    COMBO(ctrl_space, LCTL(KC_SPC)),
+    COMBO(raycast, LGUI(KC_SCLN)),
+    COMBO(app_switcher, HYPR(KC_R)),
 };
 // clang-format on
 
@@ -216,29 +202,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("~/");
             }
             break;
-        case SS_VIM_WQA:
-            if (record->event.pressed) {
-                SEND_STRING(":wqa!");
-                tap_code(KC_ENT);
-            }
-            break;
-        case SS_VIM_WQ:
-            if (record->event.pressed) {
-                tap_code(KC_ESC);
-                SEND_STRING(":wq");
-                tap_code(KC_ENT);
-            }
-            break;
         case SS_VIM_WA:
             if (record->event.pressed) {
                 tap_code(KC_ESC);
                 SEND_STRING(":wa");
-                tap_code(KC_ENT);
-            }
-            break;
-        case SS_VIM_ENTER:
-            if (record->event.pressed) {
-                SEND_STRING("vim .");
                 tap_code(KC_ENT);
             }
             break;
