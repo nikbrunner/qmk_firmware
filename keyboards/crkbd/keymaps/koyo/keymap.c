@@ -163,11 +163,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 // LY_BAS: Left & Right
 const uint16_t PROGMEM caps_word[] = {LSFT_T(KC_V), RSFT_T(KC_M), COMBO_END};
 
-const uint16_t PROGMEM raycast[]      = {KC_E, KC_I, COMBO_END};
-const uint16_t PROGMEM app_switcher[] = {KC_D, KC_K, COMBO_END};
-
-const uint16_t PROGMEM cm_colon[]   = {KC_F, KC_J, COMBO_END};
-const uint16_t PROGMEM ctrl_space[] = {LT(LY_EXT, KC_SPC), LT(LY_MED, KC_BSPC), COMBO_END};
+const uint16_t PROGMEM raycast[]      = {KC_D, KC_K, COMBO_END};
+const uint16_t PROGMEM app_switcher[] = {KC_F, KC_J, COMBO_END};
 
 // LY_BAS: Left
 
@@ -182,15 +179,16 @@ const uint16_t PROGMEM num_comma[] = {KC_P1, KC_P2, COMBO_END};
 
 // clang-format off
 combo_t key_combos[] = {
+    // LY_BAS
     COMBO(caps_word, CW_TOGG),
-    COMBO(cm_colon, KC_COLN),
     COMBO(bracket_left, KC_LBRC),
     COMBO(bracket_right, KC_RBRC),
-    COMBO(num_comma, KC_COMMA),
-    COMBO(num_dot, KC_DOT),
-    COMBO(ctrl_space, LCTL(KC_SPC)),
     COMBO(raycast, LGUI(KC_SCLN)),
     COMBO(app_switcher, HYPR(KC_R)),
+
+    // LY_NUM
+    COMBO(num_comma, KC_COMMA),
+    COMBO(num_dot, KC_DOT),
 };
 // clang-format on
 
