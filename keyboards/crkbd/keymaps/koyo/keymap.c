@@ -112,19 +112,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [LY_FUN] = LAYOUT_split_3x5_3(
-//    ┌────┬────┬────┬─────┬────┐   ┌────┬──────┬──────┬──────┬──────┐
-//    │ f7 │ f8 │ f9 │ f12 │ no │   │ no │  no  │  no  │  no  │  no  │
-//    ├────┼────┼────┼─────┼────┤   ├────┼──────┼──────┼──────┼──────┤
-//    │ f4 │ f5 │ f6 │ f11 │ no │   │ no │ rsft │ rctl │ lalt │ rgui │
-//    ├────┼────┼────┼─────┼────┤   ├────┼──────┼──────┼──────┼──────┤
-//    │ f1 │ f2 │ f3 │ f10 │ no │   │ no │  no  │  no  │  no  │  no  │
-//    └────┴────┼────┼─────┼────┤   ├────┼──────┼──────┼──────┴──────┘
-//              │ no │ no  │ no │   │ no │  no  │  no  │
-//              └────┴─────┴────┘   └────┴──────┴──────┘
-  KC_F7 , KC_F8 , KC_F9 , KC_F12 , KC_NO ,     KC_NO , KC_NO   , KC_NO   , KC_NO   , KC_NO  ,
-  KC_F4 , KC_F5 , KC_F6 , KC_F11 , KC_NO ,     KC_NO , KC_RSFT , KC_RCTL , KC_LALT , KC_RGUI,
-  KC_F1 , KC_F2 , KC_F3 , KC_F10 , KC_NO ,     KC_NO , KC_NO   , KC_NO   , KC_NO   , KC_NO  ,
-                  KC_NO , KC_NO  , KC_NO ,     KC_NO , KC_NO   , KC_NO
+//    ┌────┬─────┬─────┬─────┬────┐   ┌────┬──────┬──────┬──────┬──────┐
+//    │ f9 │ f10 │ f11 │ f12 │ no │   │ no │  no  │  no  │  no  │  no  │
+//    ├────┼─────┼─────┼─────┼────┤   ├────┼──────┼──────┼──────┼──────┤
+//    │ f5 │ f6  │ f7  │ f8  │ no │   │ no │ rsft │ rctl │ lalt │ rgui │
+//    ├────┼─────┼─────┼─────┼────┤   ├────┼──────┼──────┼──────┼──────┤
+//    │ f1 │ f2  │ f3  │ f4  │ no │   │ no │  no  │  no  │  no  │  no  │
+//    └────┴─────┼─────┼─────┼────┤   ├────┼──────┼──────┼──────┴──────┘
+//               │ no  │ no  │ no │   │ no │  no  │  no  │
+//               └─────┴─────┴────┘   └────┴──────┴──────┘
+  KC_F9 , KC_F10 , KC_F11 , KC_F12 , KC_NO ,     KC_NO , KC_NO   , KC_NO   , KC_NO   , KC_NO  ,
+  KC_F5 , KC_F6  , KC_F7  , KC_F8  , KC_NO ,     KC_NO , KC_RSFT , KC_RCTL , KC_LALT , KC_RGUI,
+  KC_F1 , KC_F2  , KC_F3  , KC_F4  , KC_NO ,     KC_NO , KC_NO   , KC_NO   , KC_NO   , KC_NO  ,
+                   KC_NO  , KC_NO  , KC_NO ,     KC_NO , KC_NO   , KC_NO
 ),
 
 [LY_MED] = LAYOUT_split_3x5_3(
