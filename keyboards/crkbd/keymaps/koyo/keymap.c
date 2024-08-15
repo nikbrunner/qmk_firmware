@@ -148,12 +148,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Tapping Term
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LT(LY_EXT, KC_SPC):
-        case KC_Z:
-        case KC_X:
-        case KC_SLSH:
-        case KC_DOT:
-            return TAPPING_TERM + 25;
+        case LGUI_T(KC_Z):
+        case LALT_T(KC_X):
+        case LALT_T(KC_DOT):
+        case RGUI_T(KC_SLSH):
+            return TAPPING_TERM + 15;
+        case LT(LY_SYM, KC_D):
+        case LT(LY_SYM, KC_K):
+        case LSFT_T(KC_V):
+        case RSFT_T(KC_M):
+            return TAPPING_TERM - 15;
         default:
             return TAPPING_TERM;
     }
@@ -164,7 +168,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM cmb_caps_word[] = {LSFT_T(KC_V), RSFT_T(KC_M), COMBO_END};
 
 // LY_BAS: Right
-const uint16_t PROGMEM cmb_backspace[] = {KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM cmb_backspace[]     = {KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM cmb_bracket_left[]  = {KC_J, LT(LY_SYM, KC_K), COMBO_END};
 const uint16_t PROGMEM cmb_bracket_right[] = {LT(LY_SYM, KC_K), KC_L, COMBO_END};
 
