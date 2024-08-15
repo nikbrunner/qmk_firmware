@@ -148,12 +148,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Tapping Term
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LT(LY_EXT, KC_SPC):
-        case KC_Z:
-        case KC_X:
-        case KC_SLSH:
-        case KC_DOT:
-            return TAPPING_TERM + 25;
+        case LGUI_T(KC_Z):
+        case LALT_T(KC_X):
+        case LALT_T(KC_DOT):
+        case RGUI_T(KC_SLSH):
+            return TAPPING_TERM + 15;
+        case LT(LY_SYM, KC_D):
+        case LT(LY_SYM, KC_K):
+        case LSFT_T(KC_V):
+        case RSFT_T(KC_M):
+            return TAPPING_TERM - 15;
         default:
             return TAPPING_TERM;
     }
@@ -161,37 +165,36 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 // COMBO ================================================================================
 // LY_BAS: Left & Right
-const uint16_t PROGMEM caps_word[] = {LSFT_T(KC_V), RSFT_T(KC_M), COMBO_END};
-
-const uint16_t PROGMEM raycast[]      = {LT(LY_SYM, KC_D), LT(LY_SYM, KC_K), COMBO_END};
-const uint16_t PROGMEM app_switcher[] = {KC_J, KC_F, COMBO_END};
-
-// LY_BAS: Left
+const uint16_t PROGMEM cmb_caps_word[]    = {LSFT_T(KC_V), RSFT_T(KC_M), COMBO_END};
+const uint16_t PROGMEM cmb_raycast[]      = {LT(LY_SYM, KC_D), LT(LY_SYM, KC_K), COMBO_END};
+const uint16_t PROGMEM cmb_app_switcher[] = {KC_J, KC_F, COMBO_END};
 
 // LY_BAS: Right
-const uint16_t PROGMEM cmb_backspace[] = {KC_I, KC_O, COMBO_END};
-const uint16_t PROGMEM bracket_left[]  = {KC_J, LT(LY_SYM, KC_K), COMBO_END};
-const uint16_t PROGMEM bracket_right[] = {LT(LY_SYM, KC_K), KC_L, COMBO_END};
+const uint16_t PROGMEM cmb_backspace[]     = {KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM cmb_bracket_left[]  = {KC_J, LT(LY_SYM, KC_K), COMBO_END};
+const uint16_t PROGMEM cmb_bracket_right[] = {LT(LY_SYM, KC_K), KC_L, COMBO_END};
 
 // LY_NUM: Right
-const uint16_t PROGMEM num_zero[]  = {KC_P4, KC_P5, COMBO_END};
-const uint16_t PROGMEM num_dot[]   = {KC_P2, KC_P3, COMBO_END};
-const uint16_t PROGMEM num_comma[] = {KC_P1, KC_P2, COMBO_END};
+const uint16_t PROGMEM cmb_num_zero[]  = {KC_P4, KC_P5, COMBO_END};
+const uint16_t PROGMEM cmb_num_dot[]   = {KC_P2, KC_P3, COMBO_END};
+const uint16_t PROGMEM cmb_num_comma[] = {KC_P1, KC_P2, COMBO_END};
 
 // clang-format off
 combo_t key_combos[] = {
+    // LY_BAS: Left & Right
+    COMBO(cmb_raycast, LGUI(KC_SCLN)),
+    COMBO(cmb_app_switcher, HYPR(KC_R)),
+
     // LY_BAS
-    COMBO(caps_word, CW_TOGG),
+    COMBO(cmb_caps_word, CW_TOGG),
     COMBO(cmb_backspace, KC_BSPC),
-    COMBO(bracket_left, KC_LBRC),
-    COMBO(bracket_right, KC_RBRC),
-    COMBO(raycast, LGUI(KC_SCLN)),
-    COMBO(app_switcher, HYPR(KC_R)),
+    COMBO(cmb_bracket_left, KC_LBRC),
+    COMBO(cmb_bracket_right, KC_RBRC),
 
     // LY_NUM
-    COMBO(num_zero, KC_P0),
-    COMBO(num_comma, KC_COMMA),
-    COMBO(num_dot, KC_DOT),
+    COMBO(cmb_num_zero, KC_P0),
+    COMBO(cmb_num_comma, KC_COMMA),
+    COMBO(cmb_num_dot, KC_DOT),
 };
 // clang-format on
 
