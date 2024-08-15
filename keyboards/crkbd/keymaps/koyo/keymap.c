@@ -165,7 +165,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 // COMBO ================================================================================
 // LY_BAS: Left & Right
-const uint16_t PROGMEM cmb_caps_word[] = {LSFT_T(KC_V), RSFT_T(KC_M), COMBO_END};
+const uint16_t PROGMEM cmb_caps_word[]    = {LSFT_T(KC_V), RSFT_T(KC_M), COMBO_END};
+const uint16_t PROGMEM cmb_raycast[]      = {LT(LY_SYM, KC_D), LT(LY_SYM, KC_K), COMBO_END};
+const uint16_t PROGMEM cmb_app_switcher[] = {KC_J, KC_F, COMBO_END};
 
 // LY_BAS: Right
 const uint16_t PROGMEM cmb_backspace[]     = {KC_I, KC_O, COMBO_END};
@@ -179,6 +181,10 @@ const uint16_t PROGMEM cmb_num_comma[] = {KC_P1, KC_P2, COMBO_END};
 
 // clang-format off
 combo_t key_combos[] = {
+    // LY_BAS: Left & Right
+    COMBO(cmb_raycast, LGUI(KC_SCLN)),
+    COMBO(cmb_app_switcher, HYPR(KC_R)),
+
     // LY_BAS
     COMBO(cmb_caps_word, CW_TOGG),
     COMBO(cmb_backspace, KC_BSPC),
