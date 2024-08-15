@@ -17,6 +17,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include QMK_KEYBOARD_H
+#include "features/achordion.h"
 
 enum layers {
     //
@@ -198,8 +199,16 @@ combo_t key_combos[] = {
 };
 // clang-format on
 
-// SEND STRING ==========================================================================
+void matrix_scan_user(void) {
+    achordion_task();
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // https://getreuer.info/posts/keyboards/achordion/index.html
+    if (!process_achordion(keycode, record)) {
+        return false;
+    }
+
     switch (keycode) {
         case SS_TILD_SLSH:
             if (record->event.pressed) {
