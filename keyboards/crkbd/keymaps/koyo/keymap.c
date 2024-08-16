@@ -203,6 +203,18 @@ void matrix_scan_user(void) {
     achordion_task();
 }
 
+// https://getreuer.info/posts/keyboards/achordion/index.html
+bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
+    // Exclude the following keycodes from the opposite-hand check.
+    switch (tap_hold_keycode) {
+        case LT(LY_EXT, KC_SPC):
+        case LT(LY_MED, KC_BSPC):
+            return true;
+    }
+
+    return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // https://getreuer.info/posts/keyboards/achordion/index.html
     if (!process_achordion(keycode, record)) {
