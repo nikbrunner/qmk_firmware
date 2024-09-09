@@ -165,15 +165,17 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 }
 
 // COMBO ================================================================================
-const uint16_t PROGMEM cmb_backspace[]     = {KC_I, KC_O, COMBO_END};
-const uint16_t PROGMEM cmb_bracket_left[]  = {KC_J, LT(LY_SYM, KC_K), COMBO_END};
-const uint16_t PROGMEM cmb_bracket_right[] = {LT(LY_SYM, KC_K), KC_L, COMBO_END};
+const uint16_t PROGMEM LY_BAS_CMB_BACKSPACE[]     = {KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM LY_NUM_CMB_BACKSPACE[]     = {KC_P8, KC_P9, COMBO_END};
+const uint16_t PROGMEM LY_BAS_CMB_BRACKET_LEFT[]  = {KC_J, LT(LY_SYM, KC_K), COMBO_END};
+const uint16_t PROGMEM LY_BAS_CMB_BRACKET_RIGHT[] = {LT(LY_SYM, KC_K), KC_L, COMBO_END};
 
 // clang-format off
 combo_t key_combos[] = {
-    COMBO(cmb_backspace, KC_BSPC),
-    COMBO(cmb_bracket_left, KC_LBRC),
-    COMBO(cmb_bracket_right, KC_RBRC),
+    COMBO(LY_BAS_CMB_BACKSPACE, KC_BSPC),
+    COMBO(LY_NUM_CMB_BACKSPACE, KC_BSPC),
+    COMBO(LY_BAS_CMB_BRACKET_LEFT, KC_LBRC),
+    COMBO(LY_BAS_CMB_BRACKET_RIGHT, KC_RBRC),
 };
 // clang-format on
 
