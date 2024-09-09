@@ -104,12 +104,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    ├──────┼──────┼──────┼──────┼─────────┤   ├──────┼──────┼──────┼──────┼──────┤
 //    │  no  │  no  │  no  │  no  │ SS_BCD  │   │ kp_- │ kp_1 │ kp_2 │ kp_3 │ kp_/ │
 //    └──────┴──────┼──────┼──────┼─────────┤   ├──────┼──────┼──────┼──────┴──────┘
-//                  │      │      │         │   │ kp_0 │  .   │  ,   │
+//                  │      │      │         │   │  ,   │ kp_0 │  .   │
 //                  └──────┴──────┴─────────┘   └──────┴──────┴──────┘
-  KC_NO   , KC_NO   , KC_NO   , KC_NO   , SS_TODO ,     KC_PPLS , KC_P7  , KC_P8    , KC_P9 , KC_PAST,
-  KC_LGUI , KC_LALT , KC_LCTL , KC_LSFT , KC_NO   ,     KC_PEQL , KC_P4  , KC_P5    , KC_P6 , KC_COLN,
-  KC_NO   , KC_NO   , KC_NO   , KC_NO   , SS_BCD  ,     KC_PMNS , KC_P1  , KC_P2    , KC_P3 , KC_PSLS,
-                      KC_TRNS , KC_TRNS , KC_TRNS ,     KC_P0   , KC_DOT , KC_COMMA
+  KC_NO   , KC_NO   , KC_NO   , KC_NO   , SS_TODO ,     KC_PPLS  , KC_P7 , KC_P8  , KC_P9 , KC_PAST,
+  KC_LGUI , KC_LALT , KC_LCTL , KC_LSFT , KC_NO   ,     KC_PEQL  , KC_P4 , KC_P5  , KC_P6 , KC_COLN,
+  KC_NO   , KC_NO   , KC_NO   , KC_NO   , SS_BCD  ,     KC_PMNS  , KC_P1 , KC_P2  , KC_P3 , KC_PSLS,
+                      KC_TRNS , KC_TRNS , KC_TRNS ,     KC_COMMA , KC_P0 , KC_DOT
 ),
 
 [LY_FUN] = LAYOUT_split_3x5_3(
